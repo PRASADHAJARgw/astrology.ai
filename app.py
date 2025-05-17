@@ -6,6 +6,8 @@ import geonamescache
 from analysis import generate_analysis
 from google_sheets_handler import log_lead
 import datetime as dt
+import uuid
+
 gc = geonamescache.GeonamesCache()
 cities = gc.get_cities()
 # Filter only Indian cities
@@ -82,6 +84,8 @@ button =st.button("Get AI Powered Astrology Insights")
 
 
 if button:
+    unique_id = str(uuid.uuid4())
+    timestamp = dt.now().isoformat()
     if feature == "🪐 Birth Chart / Kundli Generation":
         st.write("Generating your Birth Chart...")
         prompt=f"""Generate a detailed Vedic birth chart (Janam Kundli) based on the following details:
@@ -99,7 +103,7 @@ if button:
         - Brief interpretation of each planet's position"""
         response = generate_analysis(prompt=prompt)
         st.markdown(response)
-        log_lead([str(name), str(dob), str(time_of_birth), str(place_of_birth), str(response)])
+        log_lead([str(unique_id),str(timestamp),str(name), str(dob), str(time_of_birth), str(place_of_birth), str(response)])
         st.write("Analysis Generated Successfully")
         st.write("Your Birth Chart has been generated successfully!")
     elif feature == "🧑‍🎤 Personality Insights":
@@ -118,7 +122,7 @@ if button:
         - Spiritual or philosophical tendencies (Jupiter, 9th house)"""
         response = generate_analysis(prompt=prompt)
         st.markdown(response)
-        log_lead([str(name), str(dob), str(time_of_birth), str(place_of_birth), str(response)])
+        log_lead([str(unique_id),str(timestamp),str(name), str(dob), str(time_of_birth), str(place_of_birth), str(response)])
         st.write("Analysis Generated Successfully")
     elif feature == "💼 Career Path Predictions":
         st.write("Generating your Career Path Predictions...")
@@ -135,7 +139,7 @@ if button:
         - Recommendations for skill or job alignment"""
         response = generate_analysis(prompt=prompt)
         st.markdown(response)
-        log_lead([str(name), str(dob), str(time_of_birth), str(place_of_birth), str(response)])
+        log_lead([str(unique_id),str(timestamp),str(name), str(dob), str(time_of_birth), str(place_of_birth), str(response)])
         st.write("Analysis Generated Successfully")
     elif feature == "🤖 AI Chatbot for Astrology Q&A":
        
@@ -150,7 +154,7 @@ if button:
         response = generate_analysis(prompt=prompt)
         st.write("DEBUG: Response is", response)
         st.markdown(response)
-        log_lead([str(name), str(dob), str(time_of_birth), str(place_of_birth), str(response),str(question)])
+        log_lead([str(unique_id),str(timestamp),str(name), str(dob), str(time_of_birth), str(place_of_birth), str(response),str(question)])
         st.write("Analysis Generated Successfully")
     
 
