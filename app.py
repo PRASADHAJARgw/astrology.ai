@@ -5,7 +5,7 @@ import google.generativeai as genai
 import geonamescache
 from analysis import generate_analysis
 from google_sheets_handler import log_lead
-import datetime
+import datetime as dt
 gc = geonamescache.GeonamesCache()
 cities = gc.get_cities()
 # Filter only Indian cities
@@ -65,8 +65,8 @@ st.markdown("#### Enter Your Birth Details")
 name = st.text_input("Name")
 dob = st.date_input(
     "Date of Birth",
-    min_value=datetime.date(1900, 1, 1),
-    max_value=datetime.date.today()
+    min_value=dt.date(1900, 1, 1),
+    max_value=dt.date.today()
 )
 time_of_birth = st.time_input("Time of Birth")
 place_of_birth = st.selectbox("Place of Birth (City)", indian_city_names)
