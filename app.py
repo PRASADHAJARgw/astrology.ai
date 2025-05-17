@@ -44,34 +44,12 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-# st.markdown(
-#     """
-#     <style>
-#     body {
-#         background: linear-gradient(135deg, #b6e0fe 0%, #d6c1e6 60%, #f7bfcf 100%);
-#     }
-#     .stApp {
-#         background: linear-gradient(135deg, #b6e0fe 0%, #d6c1e6 60%, #f7bfcf 100%);
-#     }
-#     </style>
-#     """,
-#     unsafe_allow_html=True
-# )
-# st.markdown(
-#     """
-#     <h1 style='display: flex; align-items: center; gap: 10px;'>
-#         🔮 Astro AI <span style='font-size: 18px; color: #4F8BF9;'>Ancient Wisdom, Modern Intelligence</span> ✨
-#     </h1>
-#     """,
-#     unsafe_allow_html=True
-# )
+
 st.header(":blue[Astro AI]🔮 Ancient Wisdom, Modern Intelligence ✨",divider = "violet")
 st.subheader("💡 Tips for Using the Application")
 
 
-# ...existing code...
-
-## ceate the feature to be used as 
+ 
 feature = st.radio(
     "Select a feature:",
     [
@@ -82,7 +60,7 @@ feature = st.radio(
     ]
 )
 
-# User details input
+
 st.markdown("#### Enter Your Birth Details")
 name = st.text_input("Name")
 dob = st.date_input(
@@ -96,7 +74,7 @@ st.write(f"Hello **{name}** you were born on **{dob}** at **{time_of_birth}** in
 
 question = ""
 
-if feature == "AI Chatbot for Astrology Q&A":
+if feature == "🤖 AI Chatbot for Astrology Q&A":
     question = st.text_input("Ask your astrology-related question here")
     
     
@@ -104,7 +82,7 @@ button =st.button("Get AI Powered Astrology Insights")
 
 
 if button:
-    if feature == "Birth Chart / Kundli Generation":
+    if feature == "🪐 Birth Chart / Kundli Generation":
         st.write("Generating your Birth Chart...")
         prompt=f"""Generate a detailed Vedic birth chart (Janam Kundli) based on the following details:
         Name: {name} 
@@ -122,7 +100,7 @@ if button:
         st.markdown(generate_analysis(prompt=prompt))
         st.write("Analysis Generated Successfully")
         st.write("Your Birth Chart has been generated successfully!")
-    elif feature == "Personality Insights":
+    elif feature == "🧑‍🎤 Personality Insights":
         st.write("Generating your Personality Insights...")
         prompt=f"""Based on the following birth details, analyze the personality of the individual using astrological principles:
         Name: {name} 
@@ -138,7 +116,7 @@ if button:
         - Spiritual or philosophical tendencies (Jupiter, 9th house)"""
         st.markdown(generate_analysis(prompt=prompt))
         st.write("Analysis Generated Successfully")
-    elif feature == "Career Path Predictions":
+    elif feature == "💼 Career Path Predictions":
         st.write("Generating your Career Path Predictions...")
         prompt=f"""Provide a career prediction and guidance based on astrology using the below information:
         Name: {name}  
@@ -153,7 +131,7 @@ if button:
         - Recommendations for skill or job alignment"""
         st.markdown(generate_analysis(prompt=prompt))
         st.write("Analysis Generated Successfully")
-    elif feature == "AI Chatbot for Astrology Q&A":
+    elif feature == "🤖 AI Chatbot for Astrology Q&A":
        
         st.write("Generating your AI Chatbot for Astrology Q&A...")
         prompt=f"""Act as an expert Vedic astrologer. Answer the user's astrology-related question based on the following birth details:
