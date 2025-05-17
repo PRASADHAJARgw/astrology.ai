@@ -2,11 +2,10 @@ from dotenv import load_dotenv
 load_dotenv()
 import streamlit as st
 import google.generativeai as genai
-import datetime
 import geonamescache
 from analysis import generate_analysis
 from google_sheets_handler import log_lead
-
+import datetime
 gc = geonamescache.GeonamesCache()
 cities = gc.get_cities()
 # Filter only Indian cities
