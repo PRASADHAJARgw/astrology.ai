@@ -7,7 +7,6 @@ import geonamescache
 from analysis import generate_analysis
 from google_sheets_handler import log_lead
 import uuid
-from datetime import datetime
 
 
 gc = geonamescache.GeonamesCache()
@@ -87,7 +86,8 @@ button =st.button("Get AI Powered Astrology Insights")
 
 if button:
     unique_id = str(uuid.uuid4())
-    timestamp = datetime.now().isoformat()
+    timestamp = "nuir"
+    # datetime.now().isoformat()
     ip = st.experimental_get_query_params().get("ip", ["N/A"])[0]
     if feature == "🪐 Birth Chart / Kundli Generation":
         st.write("Generating your Birth Chart...")
