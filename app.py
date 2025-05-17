@@ -85,7 +85,7 @@ button =st.button("Get AI Powered Astrology Insights")
 
 if button:
     unique_id = str(uuid.uuid4())
-    timestamp = dt.now().isoformat()
+    timestamp = dt.datetime.now().isoformat()
     if feature == "🪐 Birth Chart / Kundli Generation":
         st.write("Generating your Birth Chart...")
         prompt=f"""Generate a detailed Vedic birth chart (Janam Kundli) based on the following details:
@@ -152,7 +152,6 @@ if button:
         Place of Birth: {place_of_birth}
         Question: {question}"""
         response = generate_analysis(prompt=prompt)
-        st.write("DEBUG: Response is", response)
         st.markdown(response)
         log_lead([str(unique_id),str(timestamp),str(name), str(dob), str(time_of_birth), str(place_of_birth), str(response),str(question)])
         st.write("Analysis Generated Successfully")
