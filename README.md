@@ -1,0 +1,2 @@
+# astrology.ai
+astrology.ai
