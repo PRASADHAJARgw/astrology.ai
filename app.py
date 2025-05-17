@@ -5,6 +5,7 @@ import google.generativeai as genai
 import datetime
 import geonamescache
 from analysis import generate_analysis
+from google_sheets_handler import log_lead
 
 gc = geonamescache.GeonamesCache()
 cities = gc.get_cities()
@@ -97,7 +98,9 @@ if button:
         - Houses (Bhava) details
         - Major Yogas (like Raj Yoga, Gajakesari Yoga)
         - Brief interpretation of each planet's position"""
-        st.markdown(generate_analysis(prompt=prompt))
+        response = generate_analysis(prompt=prompt)
+        st.markdown(response)
+        log_lead([str(name), str(dob), str(time_of_birth), str(place_of_birth), str(response)])
         st.write("Analysis Generated Successfully")
         st.write("Your Birth Chart has been generated successfully!")
     elif feature == "🧑‍🎤 Personality Insights":
@@ -114,7 +117,9 @@ if button:
         - Strengths and weaknesses
         - Social and love nature (Venus, 7th house)
         - Spiritual or philosophical tendencies (Jupiter, 9th house)"""
-        st.markdown(generate_analysis(prompt=prompt))
+        response = generate_analysis(prompt=prompt)
+        st.markdown(response)
+        log_lead([str(name), str(dob), str(time_of_birth), str(place_of_birth), str(response)])
         st.write("Analysis Generated Successfully")
     elif feature == "💼 Career Path Predictions":
         st.write("Generating your Career Path Predictions...")
@@ -129,7 +134,9 @@ if button:
         - Planetary influences on career (e.g., Saturn, Mercury, Sun)
         - Periods (Dashas) favorable for career progress
         - Recommendations for skill or job alignment"""
-        st.markdown(generate_analysis(prompt=prompt))
+        response = generate_analysis(prompt=prompt)
+        st.markdown(response)
+        log_lead([str(name), str(dob), str(time_of_birth), str(place_of_birth), str(response)])
         st.write("Analysis Generated Successfully")
     elif feature == "🤖 AI Chatbot for Astrology Q&A":
        
@@ -141,9 +148,12 @@ if button:
         Time of Birth: {time_of_birth}  
         Place of Birth: {place_of_birth}
         Question: {question}"""
-        st.markdown(generate_analysis(prompt=prompt))
-        
-        st.write("Analysis Generated Successfully")  
+        response = generate_analysis(prompt=prompt)
+        st.write("DEBUG: Response is", response)
+        st.markdown(response)
+        log_lead([str(name), str(dob), str(time_of_birth), str(place_of_birth), str(response),str(question)])
+        st.write("Analysis Generated Successfully")
+    
 
 st.markdown("###### Disclaimer: This application is for informational purposes only and should not be considered as professional advice. Always consult a qualified astrologer for personalized guidance.")
 # ...existing code...
@@ -162,8 +172,7 @@ st.markdown("""
         Made with ❤️ by Prasad Hajare | Powered by Gemini + Streamlit
     </div>""",unsafe_allow_html=True
 )
-            
-            
-            
-            
-    
+
+
+
+

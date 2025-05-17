@@ -8,8 +8,8 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 
 def generate_analysis(prompt):
     if prompt is not None:
-       st.markdown("")
+        response = model.generate_content(prompt)
+        return response.text  # <-- Return only the text!
     else:
-        st.warning("Could not  your Birth Chart...")
-    response = model.generate_content(prompt)
-    return (st.write(response.text))
+        st.warning("Could not generate your Birth Chart...")
+        return ""  # Return empty string if prompt is None
